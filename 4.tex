@@ -1,0 +1,106 @@
+\documentclass{article}
+
+
+\usepackage[margin=0.5in]{geometry}
+\usepackage{verbatim}
+
+\usepackage{parskip}
+\usepackage{tikz,pgfplots}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\title{Network Science Topic 2 and 4}
+\date{}
+
+\newcommand{\g}[1]{
+	\begin{tikzpicture}
+		\begin{axis}[legend, legend pos=outer north east]
+		\addplot[color=black] table [x=Timestep, y=S, col sep=comma] {#1};
+		\addlegendentry{S}
+		\addplot[color=blue] table [x=Timestep, y=V, col sep=comma] {#1};
+		\addlegendentry{V}
+		\addplot[color=red] table [x=Timestep, y=R, col sep=comma] {#1};
+		\addlegendentry{R}
+		\addplot[color=green] table [x=Timestep, y=I, col sep=comma] {#1};
+		\addlegendentry{I}
+		\addplot[color=cyan] table [x=Timestep, y=VI, col sep=comma] {#1};
+		\addlegendentry{VI}
+		\addplot[color=blue, dashed] table [x=Timestep, y=S+V, col sep=comma] {#1};
+		\addlegendentry{Total Healthy}
+		\addplot[color=green, dashed] table [x=Timestep, y=I+VI, col sep=comma] {#1};
+		\addlegendentry{Total Infected}
+		\end{axis}
+	\end{tikzpicture}
+
+}
+
+
+
+\begin{document}
+\maketitle
+
+\section{}
+\subsection{Random Vaccinations}
+\subsubsection{Default Values}
+
+\g{Disease1.data}
+
+\subsubsection{2x less transmission with vaccine, 2x less succeptability with vaccine, and 4x less if both parties have vaccine}
+
+\g{Disease2.data}
+\subsubsection{10x less transmission with vaccine, 10x less succeptability with vaccine, and 100x less if both parties have vaccine}
+
+\g{Disease3.data}
+
+I found that with the larger the effect that vaccines had, the quicker the infection is stopped, and fewer people get infected overall.
+I also found that regardless of the effect of vaccines, the number of infected people remained small, but the effect over time was large (a significant proportion of the population had had the virus by the end.)
+
+\subsection{Degree Centraility - max}
+\subsubsection{Default Values}
+
+\g{Degree_max1.data}
+
+\subsubsection{2x less transmission with vaccine, 2x less succeptability with vaccine, and 4x less if both parties have vaccine}
+
+\g{Degree_max2.data}
+
+
+\subsubsection{10x less transmission with vaccine, 10x less succeptability with vaccine, and 100x less if both parties have vaccine}
+
+\g{Degree_max3.data}
+
+\subsection{Degree Centrality - Probabalistic}
+\subsubsection{Default Values}
+
+\g{Degree_prob1.data}
+
+\subsubsection{2x less transmission with vaccine, 2x less succeptability with vaccine, and 4x less if both parties have vaccine}
+
+\g{Degree_prob2.data}
+
+
+\subsubsection{10x less transmission with vaccine, 10x less succeptability with vaccine, and 100x less if both parties have vaccine}
+
+\g{Degree_prob3.data}
+
+
+\subsection{Adjacency Centrality}
+\subsubsection{Default Values}
+
+\g{Adjacency1.data}
+
+\subsubsection{2x less transmission with vaccine, 2x less succeptability with vaccine, and 4x less if both parties have vaccine}
+
+\g{Adjacency2.data}
+
+
+\subsubsection{10x less transmission with vaccine, 10x less succeptability with vaccine, and 100x less if both parties have vaccine}
+
+\g{Adjacency3.data}
+
+\subsection{Analysis}
+
+The key metric is R, which measures the total number of people infected.
+Degree centrality (max) and Adjacency centrality are the most effective methods tested at preventing infections, with degree centrality (probabalistic) doing no better than randomised.
+
+\end{document}

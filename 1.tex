@@ -1,0 +1,71 @@
+\documentclass{article}
+
+
+\usepackage[margin=0.5in]{geometry}
+\usepackage{verbatim}
+
+\usepackage{parskip}
+\usepackage{tikz,pgfplots}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\title{Network Science Topic 1}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+\section{}
+\subsection{}
+\subsubsection{Largest connected component size}
+The number of vertices in the largest connected component of
+\verb"citation_graph" 
+is \input{G_Size.data}
+
+\subsubsection{Out degree distribution of G}
+
+\begin{tikzpicture}
+\begin{semilogyaxis}[scatter/classes={a={mark=o,draw=black}}]
+\addplot[scatter,only marks,scatter src=explicit symbolic]
+table[x=degree, y=count, col sep=comma] {out_distro.data};
+\end{semilogyaxis}
+\end{tikzpicture}
+
+\subsubsection{In degree distribution of G}
+
+\begin{tikzpicture}
+\begin{semilogyaxis}[scatter/classes={a={mark=o,draw=black}}]
+\addplot[scatter,only marks,scatter src=explicit symbolic]
+table[x=degree, y=count, col sep=comma] {in_distro.data};
+\end{semilogyaxis}
+\end{tikzpicture}
+
+\subsection{}
+
+\subsubsection{Out degree distribution of PA graph}
+
+\begin{tikzpicture}
+\begin{semilogyaxis}[scatter/classes={a={mark=o,draw=black}}]
+\addplot[scatter,only marks,scatter src=explicit symbolic]
+table[x=degree, y=count, col sep=comma] {PA_out_distro.data};
+\end{semilogyaxis}
+\end{tikzpicture}
+
+The out-degree distribution used is an exponential distribution. It is fairly similar to to out-degree distribution of G, but is significantly more noisy.
+Most papers will not cite many other papers, but some will cite many others, thus an exponential distribution is relevent.
+
+\subsubsection{In degree distribution of PA graph}
+
+\begin{tikzpicture}
+\begin{semilogyaxis}[scatter/classes={a={mark=o,draw=black}}]
+\addplot[scatter,only marks,scatter src=explicit symbolic]
+table[x=degree, y=count, col sep=comma] {PA_in_distro.data};
+\end{semilogyaxis}
+\end{tikzpicture}
+
+The in-degree distribution used is proportional to the in-degree of a node, e.g. each node that is added will prefer to connect to nodes that have a high number of nodes already connected.
+e.g. papers released will often cite papers that have already been cited a large amount, and not many papers will chose to cite less cited papers.
+
+
+\end{document}

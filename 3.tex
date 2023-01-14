@@ -1,0 +1,38 @@
+\documentclass{article}
+
+
+\usepackage[margin=0.5in]{geometry}
+\usepackage{listings}
+
+\usepackage{parskip}
+\usepackage{tikz,pgfplots}
+
+\lstset{breaklines=true}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\title{Network Science Topic 3}
+\date{}
+
+
+
+
+\begin{document}
+\maketitle
+
+\section{}
+\subsection{}
+\subsubsection{network}
+\lstinputlisting{topic_three_one_stats.data}
+\subsubsection{London}
+\lstinputlisting{london.data}
+\subsubsection{Roget}
+\lstinputlisting{roget.data}
+\subsubsection{CCSB-Y2H}
+\lstinputlisting{ccsb.data}
+\subsection{Analysis}
+
+I think that Adjacancy centrality is a good replacement for degree centrality, as it encapsulates the same data, e.g. the degree, but it also accounts for the degree of neighbering nodes.
+I also think that nearness centrality is a good replacement, but its use depends on whether you prioritise large numbers of small distances, or small numbers of large distances.
+
+\end{document}
